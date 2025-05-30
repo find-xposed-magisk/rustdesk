@@ -77,7 +77,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
                           decoration: TextDecoration.underline, fontSize: em)))
               .marginOnly(left: em),
         );
-
+    /** 
     setupServerWidget() => Flexible(
           child: Offstage(
             offstage: !(!_svcStopped.value &&
@@ -108,6 +108,20 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
             ),
           ),
         );
+    */
+    
+    //去除广告信息
+    Widget setupServerWidget() => Flexible(
+       child: Offstage(
+         offstage: !(!_svcStopped.value &&
+             stateGlobal.svcStatus.value == SvcStatus.ready &&
+             _svcIsUsingPublicServer.value),
+         child: Row(
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [], 
+         ),
+       ),
+     );
 
     basicWidget() => Row(
           crossAxisAlignment: CrossAxisAlignment.center,
